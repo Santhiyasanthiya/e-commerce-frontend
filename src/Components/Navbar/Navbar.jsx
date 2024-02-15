@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import "./Navbar.css";
 import logo from "../Assets/logo.png";
 import cart_icon from "../Assets/cart_icon.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 import nav_dropdown from "../Assets/dropdown_image_icon.png";
 
@@ -12,6 +12,7 @@ const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
   const menuRef = useRef();
+  const navigate = useNavigate()
 
   const dropdown_toggle = (e) => {
     menuRef.current.classList.toggle("nav-menu-visible");
@@ -79,7 +80,10 @@ const Navbar = () => {
            <Link to="/cart"><img src={cart_icon} alt="" />
         </Link>
         <div className="nav-cart-count">{getTotalCartItems()}</div>
-      </div>
+
+        <button> <a href="https://e-commerce-admin-tau-nine.vercel.app" target="_blank">Add New </a></button>
+   
+  </div>
     </div>
   );
 };
